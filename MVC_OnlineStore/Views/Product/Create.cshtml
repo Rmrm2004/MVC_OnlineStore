@@ -1,0 +1,56 @@
+﻿@model MVC_OnlineStore.Models.Product
+
+<h2>Create Product</h2>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"
+              class="text-danger">
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <input asp-for="Description"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price"></label>
+        <input asp-for="Price"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId">
+            Category
+        </label>
+
+        <select asp-for="CategoryId"
+                asp-items="ViewBag.CategoryId"
+                class="form-control">
+
+            <option value="">Select Category</option>
+
+        </select>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Create
+    </button>
+
+</form>

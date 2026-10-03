@@ -1,0 +1,48 @@
+﻿@model MVC_OnlineStore.ViewModels.CreateOrderViewModel
+
+<h2>Create Order</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="CustomerName"></label>
+        <input asp-for="CustomerName" class="form-control" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CustomerAddress"></label>
+        <input asp-for="CustomerAddress" class="form-control" />
+        <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+    </div>
+
+    <h4>Products</h4>
+
+    @for (int i = 0; i < ViewBag.Products.Count; i++)
+    {
+        var product = ViewBag.Products[i];
+
+        <div class="mb-3">
+
+            <input type="hidden"
+                   name="Items[@i].ProductId"
+                   value="@product.Id" />
+
+            <label>
+                @product.Name - @product.Price
+            </label>
+
+            <input type="number"
+                   name="Items[@i].Quantity"
+                   class="form-control"
+                   value="0"
+                   min="0" />
+
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">
+        Create Order
+    </button>
+
+</form>
